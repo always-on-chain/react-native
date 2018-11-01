@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import { View, Animated } from 'react-native';
 
-// Three main questions for animation:
-// 1. Where is the item right now?
-// Use Animated.ValueXY
-// 2. Where is the element?
-// Use Animated.Spring
-// 3. Which element are we moving?
-// Use Animated.View
-
-
 class Ball extends Component {
   componentWillMount() {
     this.position = new Animated.ValueXY(0, 0);
