@@ -39,8 +39,15 @@ class Deck extends Component {
     this.state = { panResponder, position, index: 0 };
   }
 
+  componentWillReceiveProps(nextProps) {
+    //This sets the state index to 0 when new data (cards) needs to be rendered
+    if (nextProps.data !== this.props.data) {
+      this.setState({ index: 0 });
+    }
+  }
+
   componentWillUpdate() {
-    //For Andriod
+    //Line 44 is for Andriod
     UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     LayoutAnimation.spring();
   }
@@ -103,7 +110,7 @@ class Deck extends Component {
       return (
         <Animated.View 
           key={item.id} 
-          style={[styles.cardStyle, { top: 10 * (i - this.state.index) }]}
+          style={styles.cardStyle}
         >
           {this.props.renderCard(item)}
         </Animated.View>
